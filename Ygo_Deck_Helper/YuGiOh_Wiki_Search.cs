@@ -47,15 +47,21 @@ namespace Ygo_Deck_Helper
 		public static async Task<bool> Scrape_All_Cards()
 		{
 
-			string Current_Wiki_Card_Page_Url = YuGiOhWikiUrl + "Category:TCG_cards";
+			string Current_Wiki_Card_Page_Url = YuGiOhWikiUrl + "Category:Duel_Monsters_cards";
 
 			var Card_List_Page_Get = new HtmlWeb();
-			int Page_Count =  
+
 			var Card_List_Page = Card_List_Page_Get.Load(Current_Wiki_Card_Page_Url);
-			var Card_Collection = Card_List_Page.GetElementbyId("mw-pages").SelectNodes("//div[@class='mw-content-ltr']//table//ul//li").Nodes();
+			HtmlNode YuGioh_Wiki_Main_DataNode = Card_List_Page.GetElementbyId("mw-pages");
+			var Card_Collection = YuGioh_Wiki_Main_DataNode.SelectNodes("//div[@class='mw-content-ltr']//table//ul//li").Nodes();
+			string page_Count_String =  YuGioh_Wiki_Main_DataNode.SelectSingleNode("//div[@class='wikia-paginator']//ul//li[7]//a[@class='paginator-page']").InnerText;
+			int page_Count = int.Parse(page_Count_String);
+
+			List<string> Names = new List<string>();
 			foreach (HtmlNode Node in Card_Collection)
 			{
 				string card_Url = Node.OuterHtml.Split('"')[1];
+				Names.Add(card_Url); 
 			}
 
 			return true;
