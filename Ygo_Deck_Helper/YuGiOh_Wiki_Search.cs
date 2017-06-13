@@ -46,26 +46,45 @@ namespace Ygo_Deck_Helper
 			}
 		}
 
+		public static List<string> Scrape_Wiki_Name_List_Page(string Current_Wiki_Card_Page_Url)
+		{
+			List<string> Url_List = null;
+			
+				var Card_List_Page_Get = new HtmlWeb();
+				var Card_List_Page = Card_List_Page_Get.Load(Current_Wiki_Card_Page_Url);
+				HtmlNode YuGioh_Wiki_Main_DataNode = Card_List_Page.GetElementbyId("mw-pages");
+				var Card_Collection = YuGioh_Wiki_Main_DataNode.SelectNodes("//div[@class='mw-content-ltr']//table//ul//li").Nodes();
+				Url_List = new List<string>();
+				foreach (HtmlNode Node in Card_Collection)
+				{
+					string card_Url = Node.OuterHtml.Split('"')[1];
+					Url_List.Add(card_Url);
+				}
+				return Url_List;
+		}
+
+
 		public static async Task<bool> Scrape_All_Cards()
 		{
+			
 
 			string Current_Wiki_Card_Page_Url = YuGiOhWikiUrl + "Category:Duel_Monsters_cards";
 
+			// this code scrapes the first page for the number of pages it needs to scrape 
 			var Card_List_Page_Get = new HtmlWeb();
-
 			var Card_List_Page = Card_List_Page_Get.Load(Current_Wiki_Card_Page_Url);
 			HtmlNode YuGioh_Wiki_Main_DataNode = Card_List_Page.GetElementbyId("mw-pages");
-			var Card_Collection = YuGioh_Wiki_Main_DataNode.SelectNodes("//div[@class='mw-content-ltr']//table//ul//li").Nodes();
-			string page_Count_String =  YuGioh_Wiki_Main_DataNode.SelectSingleNode("//div[@class='wikia-paginator']//ul//li[7]//a[@class='paginator-page']").InnerText;
+			string page_Count_String = YuGioh_Wiki_Main_DataNode.SelectSingleNode("//div[@class='wikia-paginator']//ul//li[7]//a[@class='paginator-page']").InnerText;
 			int page_Count = int.Parse(page_Count_String);
 
-			List<string> Names = new List<string>();
-			foreach (HtmlNode Node in Card_Collection)
-			{
-				string card_Url = Node.OuterHtml.Split('"')[1];
-				Names.Add(card_Url); 
-			}
 
+			List<Task<List<string>>> Scrape_Task_List = new List<Task<List<string>>>();
+			for (int i = 1; i < page_Count; i++)
+			{
+				 var Current_Task = Task.Run(() => Scrape_Wiki_Name_List_Page(Current_Wiki_Card_Page_Url + "?page=" + i));
+				Scrape_Task_List.Add(Current_Task);
+			}
+			await Task.WhenAll(Scrape_Task_List.ToArray());
 			return true;
 
 

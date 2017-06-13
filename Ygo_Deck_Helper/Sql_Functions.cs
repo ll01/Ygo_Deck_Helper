@@ -18,7 +18,7 @@ namespace Ygo_Deck_Helper
         }
 
         private string data_Source;
-        static public Card_Database Card_Database = new Card_Database();
+        static public Ygo_Pro_Card_Database Card_Database = new Ygo_Pro_Card_Database();
 
         internal string Data_Source
         {
@@ -76,7 +76,7 @@ namespace Ygo_Deck_Helper
             }
         }
 
-        public Card_Database Set_Up_Database()
+        public Ygo_Pro_Card_Database Set_Up_Database()
         {
             Refresh(Card_Database.texts, Data_Table_Select.texts);
             Refresh(Card_Database.datas, Data_Table_Select.datas);

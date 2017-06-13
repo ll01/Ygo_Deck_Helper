@@ -51,6 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.SQLite, Version=1.0.101.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.101.0\lib\net451\System.Data.SQLite.dll</HintPath>
       <Private>True</Private>
@@ -83,10 +84,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Card.cs" />
-    <Compile Include="Card_Database.cs" />
+    <Compile Include="Ygo_Pro_Card_Database.cs" />
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="YuGiOh_Wiki_Card_Model.cs" />
     <Compile Include="YuGiOh_Wiki_Search.cs" />
     <Compile Include="Data_Check.cs" />
     <Compile Include="Deck.cs" />
