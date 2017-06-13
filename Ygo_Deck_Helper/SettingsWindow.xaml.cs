@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.IO;
 
 namespace Ygo_Deck_Helper
 {
@@ -18,6 +19,7 @@ namespace Ygo_Deck_Helper
             IsReversedChecKBox.IsChecked = New_Settings.isReversed;
         }
 
+
         private void IsReversedChecKBox_Changed(object sender, RoutedEventArgs e)
         {
             //IsReversedChecKBox.IsChecked an be null so we check it to try find its value THEN use its state
@@ -35,5 +37,26 @@ namespace Ygo_Deck_Helper
         {
             MainWindow.CurrentSetting = New_Settings;
         }
-    }
+
+		private void SetDeckPathButton_Click(object sender, RoutedEventArgs e)
+		{
+			
+			using (var FolderPicker = new System.Windows.Forms.FolderBrowserDialog())
+			{
+				System.Windows.Forms.DialogResult result = FolderPicker.ShowDialog();
+				if (result == System.Windows.Forms.DialogResult.OK)
+				{
+					SavePathTextBlock.Text = FolderPicker.SelectedPath; 
+				}
+			}
+		}
+
+		private void SetCardDatabasePathButton_Click(object sender, RoutedEventArgs e)
+		{
+			var FilePicker = new Microsoft.Win32.OpenFileDialog();
+			if (FilePicker.ShowDialog() == true)
+				CardDatabasePathTextBlock.Text = FilePicker.FileName;
+			
+		}
+	}
 }

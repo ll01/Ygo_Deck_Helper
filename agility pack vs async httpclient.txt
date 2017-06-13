@@ -1,0 +1,27 @@
+	try
+			{
+				string Current_Wiki_Card_Page_Url = YuGiOhWikiUrl + "Category:TCG_cards";
+				System.Diagnostics.Stopwatch httpclientstop = new System.Diagnostics.Stopwatch();
+				httpclientstop.Start();
+				
+				//var Card_List_Page_Get = new HtmlWeb();
+				//var Card_List_Page = Card_List_Page_Get.Load(Current_Wiki_Card_Page_Url);
+				var client = new HttpClient();
+				var data = await client.GetAsync(Current_Wiki_Card_Page_Url).ConfigureAwait(continueOnCapturedContext: false);
+
+				string html = await data.Content.ReadAsStringAsync().ConfigureAwait(continueOnCapturedContext: false);
+				httpclientstop.Stop();
+				System.Diagnostics.Stopwatch packstop = new System.Diagnostics.Stopwatch();
+				packstop.Start();
+				var Card_Page_Get = new HtmlWeb();
+				var Card_Page = Card_Page_Get.Load(Current_Wiki_Card_Page_Url);
+				packstop.Stop();
+
+				var a = httpclientstop.Elapsed;
+				var b = packstop.Elapsed;
+				return true;
+			}
+			catch
+			{
+				return false;
+			}

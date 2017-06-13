@@ -35,7 +35,9 @@ namespace Ygo_Deck_Helper
 
         private async void BuildDeckbutton_Click(object sender, RoutedEventArgs e)
         {
-            string Deck_Name = NewDeckNameTextBox.Text;
+			await YuGiOh_Wiki_Search.Scrape_All_Cards();
+
+			string Deck_Name = NewDeckNameTextBox.Text;
             CardsNotFoundTextBlock.Text = "";
             List<string> Raw_Deck_list = new List<string>();
             List<string> Clensed_List = new List<string>();

@@ -6,22 +6,25 @@
         xmlns:local="clr-namespace:Ygo_Deck_Helper"
         mc:Ignorable="d"
         Closing="Window_Closing"
-        Title="Settings" Height="300" Width="300">
+        Title="Settings" Height="250" Width="330">
     <Grid>
         <StackPanel Margin="10">
 
-            <StackPanel Margin="10" HorizontalAlignment="Left">
-                <TextBlock>Save Path</TextBlock>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Name="SavePathTextBlock" Width="100" TextWrapping="WrapWithOverflow" />
-                    <Button FontSize="7" Name="SetDeckPathButton" Margin="5,0,0,0" Width="30">Set Path</Button>
+            <StackPanel Margin="10" Orientation="Vertical" HorizontalAlignment="Left">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock>Save Path</TextBlock>
+					<Button FontSize="7" Name="SetDeckPathButton" Margin="10,0,0,0" Width="50" Click="SetDeckPathButton_Click">Set Path</Button>
+				</StackPanel>
+				<StackPanel Orientation="Vertical">
+                    <TextBlock Name="SavePathTextBlock" Width="150" TextWrapping="WrapWithOverflow" />
+                    
                 </StackPanel>
             </StackPanel>
             <StackPanel Margin="10" HorizontalAlignment="Left">
                 <TextBlock>Card Database Location</TextBlock>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Name="CardDatabasePathTextBlock" Width="100" TextWrapping="WrapWithOverflow" />
-                    <Button FontSize="7" Name="SetCardDatabasePathButton" Margin="5,0,0,0" Width="30">Set Path</Button>
+                    <TextBlock Name="CardDatabasePathTextBlock" Width="150" TextWrapping="WrapWithOverflow" />
+                    <Button FontSize="7" Name="SetCardDatabasePathButton" Margin="10,0,0,0" Width="50" Click="SetCardDatabasePathButton_Click" >Set Path</Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Margin="10">
