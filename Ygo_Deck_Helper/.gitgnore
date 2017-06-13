@@ -17,16 +17,16 @@
 *.userprefs
 
 # Build results
-Ygo_Deck_Helper/[Dd]ebug/
-Ygo_Deck_Helper/[Dd]ebugPublic/
-Ygo_Deck_Helper/[Rr]elease/
-Ygo_Deck_Helper/[Rr]eleases/
-Ygo_Deck_Helper/x64/
-Ygo_Deck_Helper/x86/
-Ygo_Deck_Helper/bld/
-Ygo_Deck_Helper/[Bb]in/
-Ygo_Deck_Helper/[Oo]bj/
-Ygo_Deck_Helper/[Ll]og/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
 
 # Visual Studio 2015 cache/options directory
 .vs/

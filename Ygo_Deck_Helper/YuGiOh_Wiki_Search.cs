@@ -9,6 +9,8 @@ namespace Ygo_Deck_Helper
 	internal class YuGiOh_Wiki_Search
 	{
 		const string YuGiOhWikiUrl = "http://yugioh.wikia.com/wiki/";
+		// Only use when string already contains /wiki/ url inside
+		const string YuGiOhWikiUrl_LOCAL = "http://yugioh.wikia.com/";
 
 
 
