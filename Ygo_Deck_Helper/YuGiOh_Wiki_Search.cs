@@ -34,6 +34,7 @@ namespace Ygo_Deck_Helper
 		ArchType = 17,
 		TCG_Rarity = 18,
 		OCG_Rarity = 19,
+		YuGiOh_Wiki_URL = 20,
 		}
 
 
