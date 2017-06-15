@@ -12,7 +12,29 @@ namespace Ygo_Deck_Helper
 		// Only use when string already contains /wiki/ url inside
 		const string YuGiOhWikiUrl_LOCAL = "http://yugioh.wikia.com/";
 
-
+		private enum YuGiOh_Wiki_Data_Field
+		{
+		Name_en = 0,
+		Name_cn = 1,
+		Name_de = 2,
+		Name_it = 3,
+		Name_kr = 4,
+		Name_jp = 5,
+		Name_Translated = 6,
+		Attribute = 7,
+		Type_List = 8,
+		Level_Rank  = 9,
+		Scale = 10,
+		Stat_Line = 11,
+		Effect_Type_List = 12,
+		Current_Banlist_Status  = 13,
+		Effect_Text = 14,
+		TCG_en_Set_Code = 15,
+		OCG_jp_Set_Code = 16,
+		ArchType = 17,
+		TCG_Rarity = 18,
+		OCG_Rarity = 19,
+		}
 
 
 		/// <summary>
