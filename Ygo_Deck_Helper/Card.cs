@@ -5,7 +5,12 @@
         private int Card_Id;
         private int Type_Number;
         private string Card_Name;
-
+		public enum CARD_TYPE
+		{
+			Monster = 0,
+			Spell = 1,
+			Trap = 2
+		};
         /// <summary>
         /// Creates new card object
         /// </summary>
