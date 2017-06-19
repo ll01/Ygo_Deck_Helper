@@ -47,10 +47,12 @@ namespace Ygo_Deck_Helper
 		/// <returns>a key value pair where the key is the id of the card and the bool is wether or not the search is sucsesful</returns>
 		public static async Task<KeyValuePair<int, bool>> Grab_Card_Number(string Card_Name, YuGiOh_Wiki_Data_Field Data_Field )
 		{
-			string xPath_Query;
+			string xPath_Query = null;
 			switch (Data_Field)
 			{
-				YuGiOh_Wiki_Data_Field.
+				YuGiOh_Wiki_Data_Field.Card_Number: 
+				 xPath_Query =  "//tr[contains(.,'Card Number')]";
+				 break; 
 				default:
 			}
 			//TODO: Make Async
@@ -64,7 +66,7 @@ namespace Ygo_Deck_Helper
 				var Card_Page = Card_Page_Get.Load(Card_Url);
 
 				//find the table row that contains card number and scrap that cell
-				HtmlNode Card_Number_Node = Card_Page.DocumentNode.SelectSingleNode("//tr[contains(.,'Card Number')]");
+				HtmlNode Card_Number_Node = Card_Page.DocumentNode.SelectSingleNode(xPath_Query);
 				string Card_Number_Text = Card_Number_Node.InnerText;
 				Card_Number_Text = Regex.Replace(Card_Number_Text, "[^0-9]", "");
 				int Card_Number = int.Parse(Card_Number_Text);
