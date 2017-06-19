@@ -12,7 +12,7 @@ namespace Ygo_Deck_Helper
 		// Only use when string already contains /wiki/ url inside
 		const string YuGiOhWikiUrl_LOCAL = "http://yugioh.wikia.com/";
 
-		private enum YuGiOh_Wiki_Data_Field
+		public enum YuGiOh_Wiki_Data_Field
 		{
 		Name_en = 0,
 		Name_cn = 1,
@@ -21,20 +21,22 @@ namespace Ygo_Deck_Helper
 		Name_kr = 4,
 		Name_jp = 5,
 		Name_Translated = 6,
-		Attribute = 7,
-		Type_List = 8,
-		Level_Rank  = 9,
-		Scale = 10,
-		Stat_Line = 11,
-		Effect_Type_List = 12,
-		Current_Banlist_Status  = 13,
-		Effect_Text = 14,
-		TCG_en_Set_Code = 15,
-		OCG_jp_Set_Code = 16,
-		ArchType = 17,
-		TCG_Rarity = 18,
-		OCG_Rarity = 19,
-		YuGiOh_Wiki_URL = 20,
+		Card_Type = 7,
+		Attribute = 8,
+		Type_List = 9,
+		Level_Rank  = 10,
+		Scale = 11,
+		Stat_Line = 12,
+		Passcode = 13,
+		Effect_Type_List = 14,
+		Current_Banlist_Status  = 15,
+		Effect_Text = 16,
+		TCG_en_Set_Code = 17,
+		OCG_jp_Set_Code = 18,
+		ArchType = 19,
+		TCG_Rarity = 20,
+		OCG_Rarity = 21,
+		YuGiOh_Wiki_URL = 22,
 		}
 
 
@@ -43,8 +45,14 @@ namespace Ygo_Deck_Helper
 		/// </summary>
 		/// <param name="Card_Name">the name to search ygo wiki for</param>
 		/// <returns>a key value pair where the key is the id of the card and the bool is wether or not the search is sucsesful</returns>
-		public static async Task<KeyValuePair<int, bool>> Grab_Card_Number(string Card_Name)
+		public static async Task<KeyValuePair<int, bool>> Grab_Card_Number(string Card_Name, YuGiOh_Wiki_Data_Field Data_Field )
 		{
+			string xPath_Query;
+			switch (Data_Field)
+			{
+				YuGiOh_Wiki_Data_Field.
+				default:
+			}
 			//TODO: Make Async
 			try
 			{
